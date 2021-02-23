@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Rick And Morty </title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="{{ url_for('static', filename='style.css') }}">
+
+</head>
+
+<body>
+
+    <div class="container">
+        <h1>Rick and Morty Characters</h1>
+        <div class="table-1">
+            <table>
+                <tbody>
+                        <tr>
+                            <th>Name</th>
+                            <th>Status</th>
+                            <th>Species</th>
+                            <th>Type</th>
+                            <th>Gender</th>
+                            <th>Image</th>
+                        </tr>
+
+                    {% for result in results %}
+                        <tr>
+                            <td data-th="Block">{{result.name}}</td>
+                            <td data-th="Element">{{result.status}}</td>
+                            <td data-th="Modifier">{{result.species}}</td>
+                            <td data-th="Modifier">{{result.Type}}</td>
+                            <td data-th="Modifier">{{result.gender}}</td>
+                            <td data-th="Modifier"><img src={{result.image}}></td>
+                            <td data-th="Modifier"><a href="{{url_for('Info', characterId = result.Id)}}"><button>KNOW MORE</button></a></td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</body>
+
+</html>
